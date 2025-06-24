@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Orient Finance Video Playlist</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      height: 100%;
+      overflow: hidden;
+    }
+    video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <video id="videoPlayer" autoplay muted playsinline></video>
+
+  <script>
+    const videos = [
+      "nifty_video.mp4",
+      "nifty_02.mp4",
+      "why_orient.mp4"
+    ];
+    let current = 0;
+    const player = document.getElementById('videoPlayer');
+
+    function playNextVideo() {
+      player.src = videos[current];
+      player.load();
+      player.play();
+      current = (current + 1) % videos.length;
+    }
+
+    player.addEventListener('ended', playNextVideo);
+
+    // Start the first video
+    playNextVideo();
+  </script>
+</body>
+</html>
