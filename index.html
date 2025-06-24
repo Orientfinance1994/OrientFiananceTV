@@ -78,18 +78,17 @@
     <div class="grid-item" style="grid-column: 1; grid-row: 1 / span 2;">
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript">
-          new TradingView.widget({
-            "width": "100%",
-            "height": "100%",
-            "defaultColumn": "overview",
-            "defaultScreen": "general",
-            "market": "forex",
-            "showToolbar": true,
-            "colorTheme": "light",
-            "locale": "en",
-            "container_id": "tradingview-widget-container__widget"
-          });
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+        {
+          "width": "100%",
+          "height": "100%",
+          "defaultColumn": "overview",
+          "defaultScreen": "general",
+          "market": "forex",
+          "showToolbar": true,
+          "colorTheme": "light",
+          "locale": "en"
+        }
         </script>
       </div>
     </div>
@@ -98,18 +97,17 @@
     <div class="grid-item" style="grid-column: 2; grid-row: 1;">
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript">
-          new TradingView.widget({
-            "autosize": true,
-            "symbol": "OANDA:XAUUSD",
-            "interval": "W",
-            "timezone": "Etc/UTC",
-            "theme": "light",
-            "style": "1",
-            "locale": "en",
-            "allow_symbol_change": false,
-            "container_id": "tradingview-widget-container__widget"
-          });
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+        {
+          "autosize": true,
+          "symbol": "OANDA:XAUUSD",
+          "interval": "W",
+          "timezone": "Etc/UTC",
+          "theme": "light",
+          "style": "1",
+          "locale": "en",
+          "allow_symbol_change": false
+        }
         </script>
       </div>
     </div>
@@ -126,17 +124,16 @@
     <div class="grid-item" style="grid-column: 2; grid-row: 2;">
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript">
-          new TradingView.widget({
-            "feedMode": "all_symbols",
-            "isTransparent": false,
-            "displayMode": "regular",
-            "width": "100%",
-            "height": "100%",
-            "colorTheme": "light",
-            "locale": "en",
-            "container_id": "tradingview-widget-container__widget"
-          });
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+        {
+          "feedMode": "all_symbols",
+          "isTransparent": false,
+          "displayMode": "regular",
+          "width": "100%",
+          "height": "100%",
+          "colorTheme": "light",
+          "locale": "en"
+        }
         </script>
       </div>
     </div>
