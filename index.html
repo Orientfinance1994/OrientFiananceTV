@@ -2,19 +2,29 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Simple Test</title>
-    <style>
-      body {
-        background: white;
-        color: black;
-        font-size: 24px;
-        text-align: center;
-        padding-top: 50px;
-      }
-    </style>
+    <title>Orient Finance TV</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Orient Finance TV is working</h1>
-    <p>This is a lightweight test.</p>
+    <header>
+      Orient Finance TV Dashboard
+      <div id="clock"></div>
+    </header>
+    <div class="slide active" id="slide1">
+      <h1>Welcome to Orient Finance TV</h1>
+      <p>This is Slide 1 (Text)</p>
+    </div>
+    <div class="slide" id="slide2">
+      <video id="videoPlayer" controls width="100%" height="100%">
+        <source src="video/why_orient.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>This is Slide 2 (Video)</p>
+    </div>
+    <div class="slide" id="slide3">
+      <h1>Thank you for watching!</h1>
+      <p>This is Slide 3 (Text)</p>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html> 
