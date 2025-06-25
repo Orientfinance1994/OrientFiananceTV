@@ -1,20 +1,24 @@
 // Clock
 function updateClock() {
-  const clock = document.getElementById("clock");
-  const now = new Date();
+  var clock = document.getElementById("clock");
+  var now = new Date();
   clock.textContent = now.toLocaleString();
 }
 setInterval(updateClock, 1000);
 updateClock();
 
 // Slideshow Logic
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
+var slides = document.querySelectorAll(".slide");
+var currentSlide = 0;
 
 function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
-  });
+  for (var i = 0; i < slides.length; i++) {
+    if (i === index) {
+      slides[i].className = "slide active";
+    } else {
+      slides[i].className = "slide";
+    }
+  }
 }
 
 function nextSlide() {
@@ -25,13 +29,13 @@ function nextSlide() {
 setInterval(nextSlide, 30000); // switch every 30s
 
 // Video playlist logic
-const playlist = [
+var playlist = [
   "video/why_orient.mp4",
   "video/nifty_02.mp4",
   "video/nifty_video.mp4"
 ];
-let videoIndex = 0;
-const videoPlayer = document.getElementById("videoPlayer");
+var videoIndex = 0;
+var videoPlayer = document.getElementById("videoPlayer");
 
 function playNextVideo() {
   videoPlayer.src = playlist[videoIndex];
@@ -39,5 +43,7 @@ function playNextVideo() {
   videoIndex = (videoIndex + 1) % playlist.length;
 }
 
-videoPlayer.addEventListener("ended", playNextVideo);
-playNextVideo(); 
+if (videoPlayer) {
+  videoPlayer.addEventListener("ended", playNextVideo);
+  playNextVideo();
+} 
