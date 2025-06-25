@@ -13,15 +13,72 @@
   </header>
 
   <div class="slide active" id="slide1">
-    <!-- Market Watch -->
+    <!-- TradingView Widget BEGIN -->
     <div class="tradingview-widget-container">
       <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
       <!-- eslint-disable -->
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-        {"width":"100%","height":"100%","defaultColumn":"overview","defaultScreen":"general","market":"forex","showToolbar":true,"colorTheme":"light","locale":"en"}
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+      {
+      "title": "Commodities",
+      "width": "100%",
+      "height": "100%",
+      "locale": "en",
+      "showSymbolLogo": true,
+      "symbolsGroups": [
+        {
+          "name": "Energy",
+          "symbols": [
+            { "name": "PYTH:WTI3!", "displayName": "WTI Crude Oil" },
+            { "name": "BMFBOVESPA:ETH1!", "displayName": "Ethanol" }
+          ]
+        },
+        {
+          "name": "Metals",
+          "symbols": [
+            { "name": "CMCMARKETS:GOLD", "displayName": "Gold" },
+            { "name": "CMCMARKETS:SILVER", "displayName": "Silver" },
+            { "name": "CMCMARKETS:PLATINUM", "displayName": "Platinum" },
+            { "name": "CMCMARKETS:COPPER", "displayName": "Copper" }
+          ]
+        },
+        {
+          "name": "Agricultural",
+          "symbols": [
+            { "name": "BMFBOVESPA:ICF1!", "displayName": "Coffee" },
+            { "name": "CMCMARKETS:COTTON", "displayName": "Cotton" },
+            { "name": "BMFBOVESPA:SJC1!", "displayName": "Soybean" },
+            { "name": "BMFBOVESPA:CCM1!", "displayName": "Corn" }
+          ]
+        },
+        {
+          "name": "Currencies",
+          "symbols": [
+            { "name": "BMFBOVESPA:EUR1!", "displayName": "Euro" },
+            { "name": "BMFBOVESPA:GBP1!", "displayName": "British Pound" },
+            { "name": "BMFBOVESPA:JPY1!", "displayName": "Japanese Yen" },
+            { "name": "BMFBOVESPA:CHF1!", "displayName": "Swiss Franc" },
+            { "name": "BMFBOVESPA:AUD1!", "displayName": "Australian Dollar" },
+            { "name": "BMFBOVESPA:CAD1!", "displayName": "Canadian Dollar" }
+          ]
+        },
+        {
+          "name": "Indices",
+          "symbols": [
+            { "name": "BMFBOVESPA:ISP1!", "displayName": "S&P 500" },
+            { "name": "BMFBOVESPA:BRI1!", "displayName": "Brazil 50" },
+            { "name": "BMFBOVESPA:INK1!", "displayName": "Nikkei 225" },
+            { "name": "EUREX:FDAX1!", "displayName": "DAX" },
+            { "name": "BMFBOVESPA:WIN1!", "displayName": "Bovespa Index-Mini Futures" }
+          ]
+        }
+      ],
+      "colorTheme": "light"
+    }
       </script>
       <!-- eslint-enable -->
     </div>
+    <!-- TradingView Widget END -->
   </div>
 
   <div class="slide" id="slide2">
@@ -30,11 +87,11 @@
       <div class="tradingview-widget-container__widget"></div>
       <!-- eslint-disable -->
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {"autosize":true,"symbol":"OANDA:XAUUSD","interval":"W","timezone":"Etc/UTC","theme":"light","style":"1","locale":"en","allow_symbol_change":false}
+        {"autosize","true","symbol","OANDA:XAUUSD","interval","W","timezone","Etc/UTC","theme","light","style","1","locale","en","allow_symbol_change","false"}
       </script>
       <!-- eslint-enable -->
     </div>
-  </div>
+    </div>
 
   <div class="slide" id="slide3">
     <!-- Looping Video Playlist -->
@@ -47,7 +104,7 @@
       <div class="tradingview-widget-container__widget"></div>
       <!-- eslint-disable -->
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-        {"feedMode":"all_symbols","isTransparent":false,"displayMode":"regular","width":"100%","height":"100%","colorTheme":"light","locale":"en"}
+        {"feedMode","all_symbols","isTransparent","false","displayMode","regular","width","100%","height","100%","colorTheme","light","locale","en"} 
       </script>
       <!-- eslint-enable -->
     </div>
@@ -59,7 +116,7 @@
       <div class="tradingview-widget-container__widget"></div>
       <!-- eslint-disable -->
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-        {"colorTheme":"light","isTransparent":false,"width":"100%","height":"100%","locale":"en","importanceFilter":"-1,0,1"}
+        {"colorTheme","light","isTransparent","false","width","100%","height","100%","locale","en","importanceFilter","-1,0,1"} 
       </script>
       <!-- eslint-enable -->
     </div>
