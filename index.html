@@ -67,12 +67,15 @@
 
     .grid-container {
       display: grid;
-      grid-template-columns: 20% 55% 25%;
+      grid-template-columns: 1fr 2.2fr 1.2fr;
       grid-template-rows: 60% 40%;
       gap: clamp(3px, 0.5vw, 8px);
       height: calc(100vh - 110px); /* Account for header + ticker */
       padding: clamp(3px, 0.5vw, 8px);
       min-height: 400px;
+      min-width: 0;
+      min-height: 0;
+      overflow: auto;
     }
 
     .grid-item {
@@ -84,6 +87,9 @@
       resize: both;
       min-width: 150px;
       min-height: 100px;
+      min-width: 0;
+      min-height: 0;
+      overflow: auto;
     }
 
     .grid-item.resizable {
@@ -114,6 +120,10 @@
       width: 100%;
       height: 100%;
       background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
     .video-frame {
@@ -122,7 +132,8 @@
       width: 100%;
       height: 100%;
       display: none;
-      object-fit: cover;
+      object-fit: contain;
+      background: #000;
     }
 
     .video-frame.active {
@@ -160,13 +171,13 @@
     /* Responsive breakpoints */
     @media (max-width: 1200px) {
       .grid-container {
-        grid-template-columns: 25% 50% 25%;
+        grid-template-columns: 1fr 1.5fr 1fr;
       }
     }
 
     @media (max-width: 900px) {
       .grid-container {
-        grid-template-columns: 30% 40% 30%;
+        grid-template-columns: 1fr 1.2fr 1fr;
         grid-template-rows: 50% 50%;
       }
       
@@ -187,6 +198,8 @@
         grid-template-rows: 30% 30% 25% 15%;
         gap: 5px;
         padding: 5px;
+        min-width: 0;
+        min-height: 0;
       }
       
       .grid-item {
@@ -225,6 +238,8 @@
       .grid-container {
         gap: 10px;
         padding: 10px;
+        min-width: 0;
+        min-height: 0;
       }
       
       .resize-handle {
@@ -246,9 +261,11 @@
     /* Ultra-wide displays */
     @media (min-width: 2560px) {
       .grid-container {
-        grid-template-columns: 15% 60% 25%;
+        grid-template-columns: 1fr 2.5fr 1.5fr;
         gap: 15px;
         padding: 15px;
+        min-width: 0;
+        min-height: 0;
       }
       
       header {
