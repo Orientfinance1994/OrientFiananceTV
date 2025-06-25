@@ -12,50 +12,51 @@
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      height: 100vh;
-      width: 100vw;
-      background-color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffffff;
       overflow: hidden;
+      height: 100vh;
     }
 
     header {
+      background: #0b1d42;
+      color: white;
       height: 60px;
-      background-color: #0b1d42;
       display: flex;
+      justify-content: space-between;
       align-items: center;
       padding: 0 20px;
-      color: white;
-      font-size: clamp(16px, 2vw, 24px);
       font-weight: bold;
-      justify-content: space-between;
-      min-height: 50px;
+      font-size: 18px;
     }
 
-    .video-controls {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
+    .slide {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - 60px);
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      pointer-events: none;
+      background: #fff;
     }
 
-    .video-controls button {
-      background: #ffffff;
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 1;
+    }
+
+    iframe, .tradingview-widget-container__widget, video {
+      width: 100%;
+      height: 100%;
       border: none;
-      padding: clamp(5px, 1vw, 12px) clamp(8px, 1.5vw, 15px);
-      border-radius: 3px;
-      cursor: pointer;
-      font-size: clamp(10px, 1.2vw, 14px);
-      color: #0b1d42;
-      white-space: nowrap;
     }
 
-    .video-controls button:hover {
-      background: #f0f0f0;
-    }
-
-    .video-controls span {
-      font-size: clamp(10px, 1.2vw, 14px);
+    video {
+      object-fit: cover;
+      background: #000;
     }
 
     /* Ticker tape responsive */
@@ -300,119 +301,100 @@
 </head>
 <body>
   <header>
-    <span>Orient Finance TV – Live Market Display</span>
-    <div class="video-controls">
-      <button id="playPauseBtn">⏸️ Pause</button>
-      <button id="nextVideoBtn">⏭️ Next</button>
-      <span id="videoStatus">Playing</span>
-    </div>
+    Orient Finance TV Dashboard
+    <div id="clock"></div>
   </header>
 
-  <!-- TradingView Ticker Tape BEGIN -->
-  <div class="tradingview-widget-container" style="margin-bottom: 5px;">
-    <div class="tradingview-widget-container__widget"></div>
-    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-    {
-      "symbols": [
-        { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500 Index" },
-        { "proName": "FOREXCOM:NSXUSD", "title": "US 100 Cash CFD" },
-        { "proName": "FX_IDC:EURUSD", "title": "EUR to USD" },
-        { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
-        { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" },
-        { "proName": "OANDA:XAUUSD", "title": "gold" },
-        { "proName": "NASDAQ:MSFT", "title": "MAFT" }
-      ],
-      "colorTheme": "light",
-      "locale": "en",
-      "largeChartUrl": "",
-      "isTransparent": false,
-      "showSymbolLogo": true,
-      "displayMode": "adaptive"
-    }
-    </script>
-  </div>
-  <!-- TradingView Ticker Tape END -->
-
-  <div class="grid-container">
+  <div class="slide active" id="slide1">
     <!-- Market Watch -->
-    <div class="grid-item resizable" style="grid-column: 1; grid-row: 1 / span 2;">
-      <div class="resize-handle"></div>
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-        {
-          "width": "100%",
-          "height": "100%",
-          "defaultColumn": "overview",
-          "defaultScreen": "general",
-          "market": "forex",
-          "showToolbar": true,
-          "colorTheme": "light",
-          "locale": "en"
-        }
-        </script>
-      </div>
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+        {"width":"100%","height":"100%","defaultColumn":"overview","defaultScreen":"general","market":"forex","showToolbar":true,"colorTheme":"light","locale":"en"}
+      </script>
     </div>
+  </div>
 
-    <!-- Chart -->
-    <div class="grid-item resizable" style="grid-column: 2; grid-row: 1;">
-      <div class="resize-handle"></div>
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {
-          "autosize": true,
-          "symbol": "OANDA:XAUUSD",
-          "interval": "W",
-          "timezone": "Etc/UTC",
-          "theme": "light",
-          "style": "1",
-          "locale": "en",
-          "allow_symbol_change": false
-        }
-        </script>
-      </div>
+  <div class="slide" id="slide2">
+    <!-- Advanced Chart -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+        {"autosize":true,"symbol":"OANDA:XAUUSD","interval":"W","timezone":"Etc/UTC","theme":"light","style":"1","locale":"en","allow_symbol_change":false}
+      </script>
     </div>
+  </div>
 
-    <!-- Video Area -->
-    <div class="grid-item" style="grid-column: 3; grid-row: 1 / span 2;">
-      <div id="videoContainer">
-        <div class="status-indicator" id="statusIndicator"></div>
-        <video class="video-frame active" id="video1" autoplay muted loop>
-          <source src="why_orient.mp4" type="video/mp4">
-        </video>
-        <video class="video-frame" id="video2" autoplay muted loop>
-          <source src="nifty_02.mp4" type="video/mp4">
-        </video>
-        <video class="video-frame" id="video3" autoplay muted loop>
-          <source src="nifty_video.mp4" type="video/mp4">
-        </video>
-        <div class="video-info" id="videoInfo">Video 1: Why Orient</div>
-      </div>
+  <div class="slide" id="slide3">
+    <!-- Looping Video Playlist -->
+    <video id="videoPlayer" autoplay muted></video>
+  </div>
+
+  <div class="slide" id="slide4">
+    <!-- News Timeline -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+        {"feedMode":"all_symbols","isTransparent":false,"displayMode":"regular","width":"100%","height":"100%","colorTheme":"light","locale":"en"}
+      </script>
     </div>
+  </div>
 
-    <!-- News / Timeline -->
-    <div class="grid-item resizable" style="grid-column: 2; grid-row: 2;">
-      <div class="resize-handle"></div>
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-        {
-          "feedMode": "all_symbols",
-          "isTransparent": false,
-          "displayMode": "regular",
-          "width": "100%",
-          "height": "100%",
-          "colorTheme": "light",
-          "locale": "en"
-        }
-        </script>
-      </div>
+  <div class="slide" id="slide5">
+    <!-- Economic Events -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+        {"colorTheme":"light","isTransparent":false,"width":"100%","height":"100%","locale":"en","importanceFilter":"-1,0,1"}
+      </script>
     </div>
   </div>
 
   <script>
+    // Clock
+    function updateClock() {
+      const clock = document.getElementById("clock");
+      const now = new Date();
+      clock.textContent = now.toLocaleString();
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Slideshow Logic
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, 30000); // switch every 30s
+
+    // Video playlist logic
+    const playlist = [
+      "video/why_orient.mp4",
+      "video/nifty_02.mp4",
+      "video/nifty_video.mp4"
+    ];
+    let videoIndex = 0;
+    const videoPlayer = document.getElementById("videoPlayer");
+
+    function playNextVideo() {
+      videoPlayer.src = playlist[videoIndex];
+      videoPlayer.play();
+      videoIndex = (videoIndex + 1) % playlist.length;
+    }
+
+    videoPlayer.addEventListener("ended", playNextVideo);
+    playNextVideo();
+
     // Video management
     const videos = document.querySelectorAll('.video-frame');
     const videoInfo = document.getElementById('videoInfo');
@@ -429,12 +411,6 @@
       'Video 1: Why Orient',
       'Video 2: Nifty 02',
       'Video 3: Nifty Video'
-    ];
-
-    const playlist = [
-      "video/why_orient.mp4",
-      "video/nifty_02.mp4",
-      "video/nifty_video.mp4"
     ];
 
     function showVideo(index) {
