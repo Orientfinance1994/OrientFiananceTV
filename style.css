@@ -2,69 +2,138 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #ffffff;
-  overflow: hidden;
-  height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f6fa;
+  color: #222;
+  min-height: 100vh;
 }
 header {
-  background: #0b1d42;
-  color: white;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  font-weight: bold;
-  font-size: 18px;
-}
-.slide {
-  position: absolute;
-  top: 60px;
-  left: 0;
   width: 100vw;
-  height: calc(100vh - 60px);
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  pointer-events: none;
-  background: #fff;
+  height: 60px;
+  background: #1a237e;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2rem;
+  padding: 0 40px;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 10;
 }
-.slide.active {
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 1;
+.logo-title {
+  font-weight: bold;
+}
+#clock {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+.slogan {
+  width: 100vw;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #1a237e;
+  margin: 10px 0 0 0;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.dashboard-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100vw;
+  height: calc(100vh - 120px);
+  box-sizing: border-box;
+  padding: 10px 0 0 0;
+  gap: 20px;
+}
+.chart-panel {
+  flex: 3 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30,40,90,0.07);
+  margin-left: 20px;
+  overflow: hidden;
+}
+.video-panel {
+  flex: 2 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30,40,90,0.07);
+  margin-right: 20px;
+  overflow: hidden;
+}
+.tradingview-widget-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+video#videoPlayer {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  display: block;
 }
 iframe, .tradingview-widget-container__widget, video {
   width: 100%;
   height: 100%;
   border: none;
 }
-video {
-  background: #000;
-  /* fallback for object-fit */
+.ticker-tape {
   width: 100vw;
-  height: calc(100vh - 60px);
-  /* object-fit: cover; */
+  background: #fff;
+  box-shadow: 0 -2px 8px rgba(30,40,90,0.04);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  padding: 0;
 }
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  .dashboard-main {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+  }
+  .chart-panel, .video-panel {
+    margin: 0 10px;
+    min-height: 250px;
+    height: 40vh;
+  }
+}
+@media (max-width: 700px) {
   header {
-    font-size: 16px;
-    height: 50px;
+    font-size: 1.1rem;
     padding: 0 10px;
   }
-  .slide {
-    top: 50px;
-    height: calc(100vh - 50px);
+  #clock {
+    font-size: 1rem;
   }
-}
-@media (max-width: 600px) {
-  header {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 5px;
+  .dashboard-main {
+    flex-direction: column;
+    gap: 5px;
+    height: auto;
   }
-  .slide {
-    top: 40px;
-    height: calc(100vh - 40px);
+  .chart-panel, .video-panel {
+    margin: 0 2vw;
+    min-height: 180px;
+    height: 30vh;
+  }
+  .slogan {
+    font-size: 0.95rem;
   }
 } 
