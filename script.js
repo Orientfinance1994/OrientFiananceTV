@@ -14,6 +14,16 @@ const slides = Array.from(document.querySelectorAll('.slide'));
 let currentSlide = 0;
 let slideInterval = null;
 
+// Video Playlist (Slide 2 only)
+const videoPlayer = document.getElementById('videoPlayer');
+const videoSources = [
+  'video/why_orient.mp4',
+  'video/nifty_02.mp4',
+  'video/nifty_video.mp4'
+];
+let videoIdx = 0;
+let videoPlaylistActive = false;
+
 function showSlide(idx) {
   slides.forEach((slide, i) => {
     slide.classList.toggle('active', i === idx);
@@ -195,15 +205,6 @@ document.addEventListener('DOMContentLoaded', function() {
   injectCustomTradingViewEvents();
 });
 
-// Video Playlist (Slide 2 only)
-const videoPlayer = document.getElementById('videoPlayer');
-const videoSources = [
-  'video/why_orient.mp4',
-  'video/nifty_02.mp4',
-  'video/nifty_video.mp4'
-];
-let videoIdx = 0;
-let videoPlaylistActive = false;
 function startVideoPlaylist() {
   if (!videoPlayer || videoSources.length <= 1) return;
   videoPlaylistActive = true;
