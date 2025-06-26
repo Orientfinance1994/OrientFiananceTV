@@ -328,4 +328,17 @@ video#videoPlayer {
     padding: 4px 4px;
     font-size: 0.95rem;
   }
+}
+
+.single-ticker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  width: 98vw;
+  max-width: 1500px;
+  margin: 32px auto 0 auto;
+  padding: 24px 0;
+}
+.tradingview-widget-container {
+  min-height: 80px;
 } 

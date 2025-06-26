@@ -212,12 +212,35 @@ function injectCustomTradingViewEvents() {
   });
   container.appendChild(script);
 }
+function injectSingleTickerWidget(containerId, symbol) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = '';
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.async = true;
+  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-single-ticker.js';
+  script.innerHTML = JSON.stringify({
+    symbol: symbol,
+    width: "100%",
+    colorTheme: "dark",
+    isTransparent: false,
+    locale: "en"
+  });
+  container.appendChild(script);
+}
 document.addEventListener('DOMContentLoaded', function() {
   injectTradingViewTicker();
   injectTradingViewChart();
   injectTradingViewTimeline();
   injectTradingViewEvents();
   injectCustomTradingViewEvents();
+  injectSingleTickerWidget('single-ticker-eurusd', 'FX:EURUSD');
+  injectSingleTickerWidget('single-ticker-gbpusd', 'FX:GBPUSD');
+  injectSingleTickerWidget('single-ticker-usdjpy', 'FX:USDJPY');
+  injectSingleTickerWidget('single-ticker-audusd', 'FX:AUDUSD');
+  injectSingleTickerWidget('single-ticker-usdchf', 'FX:USDCHF');
+  injectSingleTickerWidget('single-ticker-usdcad', 'FX:USDCAD');
 });
 
 function startVideoPlaylist() {
