@@ -58,45 +58,6 @@ window.addEventListener('keydown', e => {
 showSlide(0);
 startSlideShow();
 
-// Forex Table (Slide 1)
-const forexData = [
-  { symbol: 'EURUSD', name: 'Euro / US Dollar', price: 1.1000, bid: 1.0998, ask: 1.1002, change: 0.12 },
-  { symbol: 'GBPUSD', name: 'British Pound / US Dollar', price: 1.2700, bid: 1.2697, ask: 1.2703, change: -0.08 },
-  { symbol: 'USDJPY', name: 'US Dollar / Japanese Yen', price: 145.20, bid: 145.18, ask: 145.22, change: 0.05 },
-  { symbol: 'AUDUSD', name: 'Australian Dollar / US Dollar', price: 0.6700, bid: 0.6698, ask: 0.6702, change: 0.09 },
-  { symbol: 'USDCHF', name: 'US Dollar / Swiss Franc', price: 0.8900, bid: 0.8898, ask: 0.8902, change: -0.03 },
-  { symbol: 'USDCAD', name: 'US Dollar / Canadian Dollar', price: 1.3400, bid: 1.3397, ask: 1.3403, change: 0.02 }
-];
-function updateForexTable() {
-  const tbody = document.querySelector('#forex-table tbody');
-  tbody.innerHTML = '';
-  forexData.forEach(row => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${row.symbol}</td>
-      <td>${row.name}</td>
-      <td>${row.price.toFixed(4)}</td>
-      <td>${row.bid.toFixed(4)}</td>
-      <td>${row.ask.toFixed(4)}</td>
-      <td style="color:${row.change >= 0 ? 'green' : 'red'}">${row.change >= 0 ? '+' : ''}${row.change.toFixed(2)}%</td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-function simulateForexUpdates() {
-  forexData.forEach(row => {
-    // Simulate small random price changes
-    const delta = (Math.random() - 0.5) * 0.002;
-    row.price += delta;
-    row.bid = row.price - 0.0002;
-    row.ask = row.price + 0.0002;
-    row.change = (Math.random() - 0.5) * 0.2;
-  });
-  updateForexTable();
-}
-updateForexTable();
-setInterval(simulateForexUpdates, 10000);
-
 // TradingView Widgets Injection
 function injectTradingViewTicker() {
   const container = document.getElementById('ticker-tape-widget');
