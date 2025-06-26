@@ -190,6 +190,28 @@ function injectSingleTickerWidget(containerId, symbol) {
   });
   container.appendChild(script);
 }
+function injectMQL5QuotesWidget(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = '';
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.async = true;
+  script.setAttribute('data-type', 'quotes-widget');
+  script.src = 'https://c.mql5.com/js/widgets/quotes/widget.js?v=1';
+  script.innerHTML = JSON.stringify({
+    type: 'overview',
+    style: 'table',
+    filter: [
+      'EURUSD', 'USDJPY', 'GBPUSD', 'AUDUSD', 'USDCAD', 'USDCHF', 'NZDUSD', 'XAUUSD', 'XAGUSD'
+    ],
+    width: '100%',
+    height: 420,
+    period: 'M1',
+    id: containerId
+  });
+  container.appendChild(script);
+}
 document.addEventListener('DOMContentLoaded', function() {
   injectTradingViewTicker();
   injectTradingViewChart();
@@ -202,6 +224,10 @@ document.addEventListener('DOMContentLoaded', function() {
   injectSingleTickerWidget('single-ticker-audusd', 'FX:AUDUSD');
   injectSingleTickerWidget('single-ticker-usdchf', 'FX:USDCHF');
   injectSingleTickerWidget('single-ticker-usdcad', 'FX:USDCAD');
+  injectMQL5QuotesWidget('quotesWidgetOverview-slide1');
+  injectMQL5QuotesWidget('quotesWidgetOverview-slide2');
+  injectMQL5QuotesWidget('quotesWidgetOverview-slide3');
+  injectMQL5QuotesWidget('quotesWidgetOverview-slide4');
 });
 
 function startVideoPlaylist() {
