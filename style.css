@@ -77,14 +77,19 @@ header {
   justify-content: center;
 }
 .forex-table-container {
-  width: 90vw;
+  width: 96vw;
+  max-width: 1400px;
   margin: 0 auto;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(30,40,90,0.07);
-  padding: 20px;
+  padding: 24px 16px 24px 16px;
   margin-top: 20px;
   overflow-x: auto;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #forex-table {
   width: 100%;
@@ -109,12 +114,12 @@ header {
   display: flex;
   flex-direction: row;
   height: 100%;
-  gap: 20px;
-  padding: 30px 2vw 2vw 2vw;
+  gap: 24px;
+  padding: 32px 2vw 2vw 2vw;
   box-sizing: border-box;
 }
 .chart-panel {
-  flex: 2 1 0;
+  flex: 6 1 0;
   min-width: 0;
   background: #fff;
   border-radius: 12px;
@@ -123,13 +128,17 @@ header {
   display: flex;
   align-items: stretch;
   justify-content: stretch;
+  height: 80vh;
+  max-height: 80vh;
 }
 .chart-panel .tradingview-widget-container {
   width: 100%;
   height: 100%;
+  min-width: 350px;
+  min-height: 400px;
 }
 .video-panel {
-  flex: 1 1 0;
+  flex: 4 1 0;
   min-width: 0;
   background: #fff;
   border-radius: 12px;
@@ -138,6 +147,8 @@ header {
   display: flex;
   align-items: stretch;
   justify-content: stretch;
+  height: 80vh;
+  max-height: 80vh;
 }
 video#videoPlayer {
   width: 100%;
@@ -150,64 +161,86 @@ video#videoPlayer {
 .slide3-content {
   display: flex;
   flex-direction: row;
-  height: 50%;
-  gap: 20px;
-  padding: 30px 2vw 2vw 2vw;
+  height: 80vh;
+  gap: 24px;
+  padding: 32px 2vw 2vw 2vw;
   box-sizing: border-box;
 }
 .timeline-panel {
-  flex: 2 1 0;
-  min-width: 0;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(30,40,90,0.07);
-  overflow: hidden;
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-}
-.custom-events-panel {
   flex: 1 1 0;
   min-width: 0;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(30,40,90,0.07);
-  overflow: hidden;
+  overflow: auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  height: 100%;
+  max-height: 100%;
+}
+.custom-events-panel {
+  flex: 0 0 420px;
+  min-width: 320px;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30,40,90,0.07);
+  overflow: auto;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
   padding: 10px;
-  max-width: 420px;
+  height: 100%;
+  max-height: 100%;
 }
 #custom-events-widget {
   width: 400px;
   height: 550px;
 }
+.events-panel {
+  width: 96vw;
+  max-width: 1400px;
+  margin: 24px auto 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30,40,90,0.07);
+  overflow: auto;
+  padding: 10px 0;
+  min-height: 200px;
+  height: 30vh;
+}
+
+.tradingview-widget-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
 /* Responsive Design */
 @media (max-width: 1100px) {
-  .slide2-content {
+  .slide2-content, .slide3-content {
     flex-direction: column;
-    gap: 10px;
-    padding: 10px 1vw 1vw 1vw;
-  }
-  .chart-panel, .video-panel {
-    min-height: 200px;
-    height: 40vh;
-  }
-  .slide3-content {
-    flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     padding: 10px 1vw 1vw 1vw;
     height: auto;
   }
-  .custom-events-panel, .timeline-panel {
-    max-width: 100vw;
+  .chart-panel, .video-panel, .timeline-panel, .custom-events-panel {
     min-height: 200px;
     height: 40vh;
+    max-height: 40vh;
+    width: 100%;
+    max-width: 100vw;
   }
   #custom-events-widget {
     width: 100%;
     height: 300px;
+  }
+  .events-panel {
+    min-height: 120px;
+    height: 20vh;
   }
 }
 @media (max-width: 700px) {
@@ -218,28 +251,25 @@ video#videoPlayer {
   #clock {
     font-size: 1rem;
   }
-  .slide2-content {
+  .slide2-content, .slide3-content {
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     padding: 5px 0 0 0;
   }
-  .chart-panel, .video-panel {
+  .chart-panel, .video-panel, .timeline-panel, .custom-events-panel {
     min-height: 120px;
     height: 30vh;
-  }
-  .slide3-content {
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px 0 0 0;
-  }
-  .custom-events-panel, .timeline-panel {
-    min-height: 120px;
-    height: 30vh;
+    max-height: 30vh;
+    width: 100%;
     max-width: 100vw;
   }
   #custom-events-widget {
     width: 100%;
     height: 200px;
+  }
+  .events-panel {
+    min-height: 80px;
+    height: 15vh;
   }
   .forex-table-container {
     padding: 8px;
