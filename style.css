@@ -1,3 +1,13 @@
+:root {
+  --primary-blue: #1a237e;
+  --accent-blue: #0b1d42;
+  --bg-light: #f5f6fa;
+  --row-hover: #e8eaf6;
+  --text-dark: #212121;
+  --pos-green: #4caf50;
+  --neg-red: #f44336;
+}
+
 * { box-sizing: border-box; }
 html, body {
   margin: 0;
@@ -5,8 +15,8 @@ html, body {
   width: 100vw;
   height: 100vh;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f5f6fa;
-  color: #222;
+  background: var(--bg-light);
+  color: var(--text-dark);
   overflow: hidden;
 }
 header {
@@ -15,13 +25,13 @@ header {
   left: 0;
   width: 100vw;
   height: 60px;
-  background: #1a237e;
+  background: var(--accent-blue);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 2rem;
-  padding: 0 40px;
+  font-size: 2.2rem;
+  padding: 0 48px;
   box-sizing: border-box;
   letter-spacing: 1px;
   z-index: 100;
@@ -30,7 +40,7 @@ header {
   font-weight: bold;
 }
 #clock {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: 2px;
 }
@@ -41,7 +51,7 @@ header {
   left: 0;
   width: 100vw;
   height: calc(100vh - 60px);
-  background: #fff;
+  background: var(--bg-light);
   box-sizing: border-box;
   overflow: hidden;
   opacity: 0;
@@ -62,7 +72,7 @@ header {
 .ticker-tape {
   width: 100vw;
   min-height: 48px;
-  background: #f5f6fa;
+  background: var(--bg-light);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,14 +87,14 @@ header {
   justify-content: center;
 }
 .forex-table-container {
-  width: 96vw;
-  max-width: 1400px;
+  width: 98vw;
+  max-width: 1500px;
   margin: 0 auto;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(30,40,90,0.07);
-  padding: 24px 16px 24px 16px;
-  margin-top: 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(30,40,90,0.09);
+  padding: 32px 24px 32px 24px;
+  margin-top: 24px;
   overflow-x: auto;
   min-height: 60vh;
   display: flex;
@@ -94,36 +104,45 @@ header {
 #forex-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 1.1rem;
-}
-#forex-table th, #forex-table td {
-  padding: 8px 12px;
-  border-bottom: 1px solid #e0e0e0;
-  text-align: center;
+  font-size: 1.25rem;
 }
 #forex-table th {
-  background: #f5f6fa;
-  color: #1a237e;
-  font-weight: 600;
+  background: var(--primary-blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15em;
+  padding: 16px 12px;
+  border-bottom: 2px solid var(--accent-blue);
+}
+#forex-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 1.1em;
 }
 #forex-table tr:last-child td {
   border-bottom: none;
 }
+#forex-table tbody tr:hover {
+  background: var(--row-hover);
+}
+.change.pos { color: var(--pos-green); font-weight: bold; }
+.change.neg { color: var(--neg-red); font-weight: bold; }
 /* Slide 2: Chart + Video side by side */
 .slide2-content {
   display: flex;
   flex-direction: row;
   height: 100%;
-  gap: 24px;
-  padding: 32px 2vw 2vw 2vw;
+  gap: 32px;
+  padding: 40px 3vw 3vw 3vw;
   box-sizing: border-box;
 }
 .chart-panel {
   flex: 6 1 0;
   min-width: 0;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(30,40,90,0.07);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(30,40,90,0.09);
   overflow: hidden;
   display: flex;
   align-items: stretch;
@@ -140,15 +159,16 @@ header {
 .video-panel {
   flex: 4 1 0;
   min-width: 0;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(30,40,90,0.07);
+  background: var(--accent-blue);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(30,40,90,0.09);
   overflow: hidden;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
   height: 80vh;
   max-height: 80vh;
+  position: relative;
 }
 video#videoPlayer {
   width: 100%;
@@ -156,41 +176,49 @@ video#videoPlayer {
   object-fit: contain;
   background: #000;
   display: block;
+  border-radius: 0 0 16px 16px;
+}
+.divider {
+  width: 2px;
+  background: var(--row-hover);
+  height: 80vh;
+  margin: 0 12px;
 }
 /* Slide 3: Timeline + Events stacked */
 .slide3-content {
   display: flex;
   flex-direction: row;
   height: 80vh;
-  gap: 24px;
-  padding: 32px 2vw 2vw 2vw;
+  gap: 32px;
+  padding: 40px 3vw 3vw 3vw;
   box-sizing: border-box;
 }
 .timeline-panel {
   flex: 1 1 0;
   min-width: 0;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(30,40,90,0.07);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(30,40,90,0.09);
   overflow: auto;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
   height: 100%;
   max-height: 100%;
+  padding: 16px;
 }
 .custom-events-panel {
   flex: 0 0 420px;
   min-width: 320px;
   max-width: 420px;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(30,40,90,0.07);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(30,40,90,0.09);
   overflow: auto;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-  padding: 10px;
+  padding: 16px;
   height: 100%;
   max-height: 100%;
 }
@@ -199,14 +227,14 @@ video#videoPlayer {
   height: 550px;
 }
 .events-panel {
-  width: 96vw;
-  max-width: 1400px;
-  margin: 24px auto 0 auto;
+  width: 98vw;
+  max-width: 1500px;
+  margin: 32px auto 0 auto;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(30,40,90,0.07);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(30,40,90,0.09);
   overflow: auto;
-  padding: 10px 0;
+  padding: 16px 0;
   min-height: 200px;
   height: 30vh;
 }
@@ -219,11 +247,25 @@ video#videoPlayer {
   justify-content: stretch;
 }
 
+#resizer {
+  background: var(--row-hover);
+  height: 6px;
+  width: 100%;
+  cursor: row-resize;
+}
+
 /* Responsive Design */
 @media (max-width: 1100px) {
+  header {
+    font-size: 1.3rem;
+    padding: 0 16px;
+  }
+  #clock {
+    font-size: 1.1rem;
+  }
   .slide2-content, .slide3-content {
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     padding: 10px 1vw 1vw 1vw;
     height: auto;
   }
@@ -242,18 +284,25 @@ video#videoPlayer {
     min-height: 120px;
     height: 20vh;
   }
+  .forex-table-container {
+    padding: 12px;
+  }
+  #forex-table th, #forex-table td {
+    padding: 8px 6px;
+    font-size: 1rem;
+  }
 }
 @media (max-width: 700px) {
   header {
     font-size: 1.1rem;
-    padding: 0 10px;
+    padding: 0 6px;
   }
   #clock {
     font-size: 1rem;
   }
   .slide2-content, .slide3-content {
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     padding: 5px 0 0 0;
   }
   .chart-panel, .video-panel, .timeline-panel, .custom-events-panel {
@@ -272,11 +321,11 @@ video#videoPlayer {
     height: 15vh;
   }
   .forex-table-container {
-    padding: 8px;
-    margin-top: 8px;
+    padding: 6px;
+    margin-top: 6px;
   }
   #forex-table th, #forex-table td {
-    padding: 4px 6px;
+    padding: 4px 4px;
     font-size: 0.95rem;
   }
 } 
