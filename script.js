@@ -174,21 +174,26 @@ function injectCustomTradingViewEvents() {
   container.appendChild(script);
 }
 function injectSingleTickerWidget(containerId, symbol) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  container.innerHTML = '';
-  const script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.async = true;
-  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-single-ticker.js';
-  script.innerHTML = JSON.stringify({
-    symbol: symbol,
-    width: "100%",
-    colorTheme: "dark",
-    isTransparent: false,
-    locale: "en"
-  });
-  container.appendChild(script);
+  setTimeout(function() {
+    const container = document.getElementById(containerId);
+    if (!container) {
+      console.error('Single Ticker container not found:', containerId);
+      return;
+    }
+    container.innerHTML = '';
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-single-ticker.js';
+    script.innerHTML = JSON.stringify({
+      symbol: symbol,
+      width: "100%",
+      colorTheme: "dark",
+      isTransparent: false,
+      locale: "en"
+    });
+    container.appendChild(script);
+  }, 300);
 }
 function injectMQL5QuotesWidget(containerId) {
   const container = document.getElementById(containerId);
